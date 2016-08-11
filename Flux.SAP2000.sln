@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flux.SAP2000.Converters", "Flux.SAP2000.Converters\Flux.SAP2000.Converters.csproj", "{2F673BCD-EC7F-41E3-B808-30B6262B94A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flux.SAP2000.Interop", "Flux.SAP2000.Interop\Flux.SAP2000.Interop.csproj", "{0BF57585-6462-47DF-8FC7-3883FB95CA39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flux.SAP2000.Controller", "Flux.SAP2000.Controller\Flux.SAP2000.Controller.csproj", "{176BE7FD-C2A7-4DBC-803C-1376947C151B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F673BCD-EC7F-41E3-B808-30B6262B94A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F673BCD-EC7F-41E3-B808-30B6262B94A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F673BCD-EC7F-41E3-B808-30B6262B94A3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2F673BCD-EC7F-41E3-B808-30B6262B94A3}.Debug|x64.Build.0 = Debug|Any CPU
+		{2F673BCD-EC7F-41E3-B808-30B6262B94A3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2F673BCD-EC7F-41E3-B808-30B6262B94A3}.Debug|x86.Build.0 = Debug|Any CPU
+		{2F673BCD-EC7F-41E3-B808-30B6262B94A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F673BCD-EC7F-41E3-B808-30B6262B94A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F673BCD-EC7F-41E3-B808-30B6262B94A3}.Release|x64.ActiveCfg = Release|Any CPU
+		{2F673BCD-EC7F-41E3-B808-30B6262B94A3}.Release|x64.Build.0 = Release|Any CPU
+		{2F673BCD-EC7F-41E3-B808-30B6262B94A3}.Release|x86.ActiveCfg = Release|Any CPU
+		{2F673BCD-EC7F-41E3-B808-30B6262B94A3}.Release|x86.Build.0 = Release|Any CPU
+		{0BF57585-6462-47DF-8FC7-3883FB95CA39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BF57585-6462-47DF-8FC7-3883FB95CA39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BF57585-6462-47DF-8FC7-3883FB95CA39}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0BF57585-6462-47DF-8FC7-3883FB95CA39}.Debug|x64.Build.0 = Debug|Any CPU
+		{0BF57585-6462-47DF-8FC7-3883FB95CA39}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0BF57585-6462-47DF-8FC7-3883FB95CA39}.Debug|x86.Build.0 = Debug|Any CPU
+		{0BF57585-6462-47DF-8FC7-3883FB95CA39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BF57585-6462-47DF-8FC7-3883FB95CA39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BF57585-6462-47DF-8FC7-3883FB95CA39}.Release|x64.ActiveCfg = Release|Any CPU
+		{0BF57585-6462-47DF-8FC7-3883FB95CA39}.Release|x64.Build.0 = Release|Any CPU
+		{0BF57585-6462-47DF-8FC7-3883FB95CA39}.Release|x86.ActiveCfg = Release|Any CPU
+		{0BF57585-6462-47DF-8FC7-3883FB95CA39}.Release|x86.Build.0 = Release|Any CPU
+		{176BE7FD-C2A7-4DBC-803C-1376947C151B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{176BE7FD-C2A7-4DBC-803C-1376947C151B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{176BE7FD-C2A7-4DBC-803C-1376947C151B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{176BE7FD-C2A7-4DBC-803C-1376947C151B}.Debug|x64.Build.0 = Debug|Any CPU
+		{176BE7FD-C2A7-4DBC-803C-1376947C151B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{176BE7FD-C2A7-4DBC-803C-1376947C151B}.Debug|x86.Build.0 = Debug|Any CPU
+		{176BE7FD-C2A7-4DBC-803C-1376947C151B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{176BE7FD-C2A7-4DBC-803C-1376947C151B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{176BE7FD-C2A7-4DBC-803C-1376947C151B}.Release|x64.ActiveCfg = Release|Any CPU
+		{176BE7FD-C2A7-4DBC-803C-1376947C151B}.Release|x64.Build.0 = Release|Any CPU
+		{176BE7FD-C2A7-4DBC-803C-1376947C151B}.Release|x86.ActiveCfg = Release|Any CPU
+		{176BE7FD-C2A7-4DBC-803C-1376947C151B}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

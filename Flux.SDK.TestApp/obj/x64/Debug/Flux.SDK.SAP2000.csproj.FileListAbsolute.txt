@@ -1,0 +1,13 @@
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\SampleApplication\Flux.SDK.TestApp\bin\x64\Debug\Flux.config
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\SampleApplication\Flux.SDK.TestApp\bin\x64\Debug\FluxPipe.SDK.SAP2000.exe
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\SampleApplication\Flux.SDK.TestApp\bin\x64\Debug\FluxPipe.SDK.SAP2000.pdb
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\SampleApplication\Flux.SDK.TestApp\bin\x64\Debug\Flux.Logger.dll
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\SampleApplication\Flux.SDK.TestApp\bin\x64\Debug\Flux.Measure.CSharp.dll
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\SampleApplication\Flux.SDK.TestApp\bin\x64\Debug\Flux.SDK.dll
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\SampleApplication\Flux.SDK.TestApp\bin\x64\Debug\Flux.SDK.Serialization.dll
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\SampleApplication\Flux.SDK.TestApp\bin\x64\Debug\Flux.SDK.xml
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\SampleApplication\Flux.SDK.TestApp\obj\x64\Debug\Flux.SDK.SAP2000.csprojResolveAssemblyReference.cache
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\SampleApplication\Flux.SDK.TestApp\obj\x64\Debug\FluxPipe.SDK.SAP2000.exe
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\SampleApplication\Flux.SDK.TestApp\obj\x64\Debug\FluxPipe.SDK.SAP2000.pdb
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\SampleApplication\Flux.SDK.TestApp\bin\x64\Debug\SAP2000v18.dll
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\SampleApplication\Flux.SDK.TestApp\bin\x64\Debug\Newtonsoft.Json.dll

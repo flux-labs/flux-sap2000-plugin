@@ -1,0 +1,55 @@
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.2.1.11.508.Evaluation\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.config
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.2.1.11.508.Evaluation\SampleApplication\Flux.SDK.TestApp\bin\Debug\FluxPipe.SDK.TestApp.exe
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.2.1.11.508.Evaluation\SampleApplication\Flux.SDK.TestApp\bin\Debug\FluxPipe.SDK.TestApp.pdb
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.2.1.11.508.Evaluation\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.Logger.dll
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.2.1.11.508.Evaluation\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.SDK.dll
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.2.1.11.508.Evaluation\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.SDK.Serialization.dll
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.2.1.11.508.Evaluation\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.Measure.CSharp.dll
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.2.1.11.508.Evaluation\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.SDK.xml
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.2.1.11.508.Evaluation\SampleApplication\Flux.SDK.TestApp\obj\Debug\Flux.SDK.TestApp.csprojResolveAssemblyReference.cache
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.2.1.11.508.Evaluation\SampleApplication\Flux.SDK.TestApp\obj\Debug\FluxPipe.SDK.TestApp.exe
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.2.1.11.508.Evaluation\SampleApplication\Flux.SDK.TestApp\obj\Debug\FluxPipe.SDK.TestApp.pdb
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.0.11.566.Develop\SampleApplication\Flux.SDK.TestApp\obj\Debug\Flux.SDK.TestApp.csprojResolveAssemblyReference.cache
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.0.11.566.Develop\SampleApplication\Flux.SDK.TestApp\obj\Debug\FluxPipe.SDK.TestApp.exe
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.0.11.566.Develop\SampleApplication\Flux.SDK.TestApp\obj\Debug\FluxPipe.SDK.TestApp.pdb
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.0.11.566.Develop\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.config
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.0.11.566.Develop\SampleApplication\Flux.SDK.TestApp\bin\Debug\FluxPipe.SDK.TestApp.exe
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.0.11.566.Develop\SampleApplication\Flux.SDK.TestApp\bin\Debug\FluxPipe.SDK.TestApp.pdb
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.0.11.566.Develop\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.Logger.dll
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.0.11.566.Develop\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.SDK.dll
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.0.11.566.Develop\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.SDK.Serialization.dll
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.0.11.566.Develop\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.Measure.CSharp.dll
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.0.11.566.Develop\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.SDK.xml
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.1.11.508\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.config
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.1.11.508\SampleApplication\Flux.SDK.TestApp\bin\Debug\FluxPipe.SDK.TestApp.exe
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.1.11.508\SampleApplication\Flux.SDK.TestApp\bin\Debug\FluxPipe.SDK.TestApp.pdb
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.1.11.508\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.Logger.dll
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.1.11.508\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.Measure.CSharp.dll
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.1.11.508\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.SDK.dll
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.1.11.508\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.SDK.Extension.dll
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.1.11.508\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.SDK.Serialization.dll
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.1.11.508\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.SDK.xml
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.1.11.508\SampleApplication\Flux.SDK.TestApp\obj\Debug\FluxPipe.SDK.TestApp.exe
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.1.11.508\SampleApplication\Flux.SDK.TestApp\obj\Debug\FluxPipe.SDK.TestApp.pdb
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.1.11.568\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.config
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.1.11.568\SampleApplication\Flux.SDK.TestApp\bin\Debug\FluxPipe.SDK.TestApp.exe
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.1.11.568\SampleApplication\Flux.SDK.TestApp\bin\Debug\FluxPipe.SDK.TestApp.pdb
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.1.11.568\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.Logger.dll
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.1.11.568\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.Measure.CSharp.dll
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.1.11.568\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.SDK.dll
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.1.11.568\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.SDK.Extension.dll
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.1.11.568\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.SDK.Serialization.dll
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.1.11.568\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.SDK.xml
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.1.11.568\SampleApplication\Flux.SDK.TestApp\obj\Debug\FluxPipe.SDK.TestApp.exe
+C:\Users\karl\Documents\Visual Studio 2015\Projects\Flux.SDK.CS.2.1.11.568\SampleApplication\Flux.SDK.TestApp\obj\Debug\FluxPipe.SDK.TestApp.pdb
+C:\Users\Anthony\Documents\Flux\Coding\Csharp\Flux.SDK.CS.2.1.12.588.Release\Flux.SDK.CS.2.1.12.588\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.config
+C:\Users\Anthony\Documents\Flux\Coding\Csharp\Flux.SDK.CS.2.1.12.588.Release\Flux.SDK.CS.2.1.12.588\SampleApplication\Flux.SDK.TestApp\bin\Debug\FluxPipe.SDK.TestApp.exe
+C:\Users\Anthony\Documents\Flux\Coding\Csharp\Flux.SDK.CS.2.1.12.588.Release\Flux.SDK.CS.2.1.12.588\SampleApplication\Flux.SDK.TestApp\bin\Debug\FluxPipe.SDK.TestApp.pdb
+C:\Users\Anthony\Documents\Flux\Coding\Csharp\Flux.SDK.CS.2.1.12.588.Release\Flux.SDK.CS.2.1.12.588\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.Logger.dll
+C:\Users\Anthony\Documents\Flux\Coding\Csharp\Flux.SDK.CS.2.1.12.588.Release\Flux.SDK.CS.2.1.12.588\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.Measure.CSharp.dll
+C:\Users\Anthony\Documents\Flux\Coding\Csharp\Flux.SDK.CS.2.1.12.588.Release\Flux.SDK.CS.2.1.12.588\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.SDK.dll
+C:\Users\Anthony\Documents\Flux\Coding\Csharp\Flux.SDK.CS.2.1.12.588.Release\Flux.SDK.CS.2.1.12.588\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.SDK.Serialization.dll
+C:\Users\Anthony\Documents\Flux\Coding\Csharp\Flux.SDK.CS.2.1.12.588.Release\Flux.SDK.CS.2.1.12.588\SampleApplication\Flux.SDK.TestApp\bin\Debug\Flux.SDK.xml
+C:\Users\Anthony\Documents\Flux\Coding\Csharp\Flux.SDK.CS.2.1.12.588.Release\Flux.SDK.CS.2.1.12.588\SampleApplication\Flux.SDK.TestApp\obj\Debug\Flux.SDK.TestApp.csprojResolveAssemblyReference.cache
+C:\Users\Anthony\Documents\Flux\Coding\Csharp\Flux.SDK.CS.2.1.12.588.Release\Flux.SDK.CS.2.1.12.588\SampleApplication\Flux.SDK.TestApp\obj\Debug\FluxPipe.SDK.TestApp.exe
+C:\Users\Anthony\Documents\Flux\Coding\Csharp\Flux.SDK.CS.2.1.12.588.Release\Flux.SDK.CS.2.1.12.588\SampleApplication\Flux.SDK.TestApp\obj\Debug\FluxPipe.SDK.TestApp.pdb
