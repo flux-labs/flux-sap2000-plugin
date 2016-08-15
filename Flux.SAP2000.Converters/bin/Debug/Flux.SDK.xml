@@ -10,17 +10,14 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Flux.SDK.IFluxSDK.Login(System.String,System.String,System.Boolean)">
-            <summary>Log in user using flux credentials</summary>
-            <param name="email">Login</param>
-            <param name="password">Password</param>
-            <param name="saveCookie">Set to true to save cookies.</param>
-            <returns>Currently logged in user.</returns>
-            <exception cref="T:Flux.SDK.Exceptions.ConnectionFailureException">Throws if network connection is down.</exception>
-            <exception cref="T:Flux.SDK.Exceptions.InternalSDKException">Throws for unhandled SDK exceptions.</exception>
+        <member name="T:Flux.SDK.DataTableAPI.DatatableTypes.CellRefResult">
+            <summary>Structure contains cell reference.</summary>
         </member>
-        <member name="M:Flux.SDK.IFluxSDK.LoginViaOIC(System.String,System.String)">
-            <summary>Log in user using OIC code flow. Use OnUserLogin event to get notified when user is logged in.</summary>
+        <member name="T:Flux.SDK.DataTableAPI.DatatableTypes.ProgressReporter">
+            <summary>Report progress to the specified MaxProgressValue.</summary>
+        </member>
+        <member name="M:Flux.SDK.IFluxSDK.Login(System.String,System.String)">
+            <summary>Log in user using OIDC code flow. Use OnUserLogin event to get notified when user is logged in.</summary>
             <param name="clientSecret">ClientSecret to be used to request an authorization token from Flux.</param>
             <param name="pluginInfoUrl">Info url to navigate to after login.</param>
             <exception cref="T:Flux.SDK.Exceptions.AuthorizationFailedException">Throws if OpenId authorization process failed.</exception>
@@ -28,7 +25,7 @@
             <exception cref="T:Flux.SDK.Exceptions.InternalSDKException">Throws for unhandled SDK exceptions.</exception>
         </member>
         <member name="M:Flux.SDK.IFluxSDK.Logout">
-            <summary>Logout the current user, clears saved cookies.</summary>
+            <summary>Logout the current user from sdk, clears saved cookies.</summary>
         </member>
         <member name="M:Flux.SDK.IFluxSDK.GetSupportedVersions">
             <summary>Obtain plugin versions supported by Flux</summary>
@@ -443,7 +440,7 @@
             <exception cref="T:Flux.SDK.Exceptions.ServerUnavailableException">Throws if Flux server is down.</exception>
             <exception cref="T:Flux.SDK.Exceptions.InternalSDKException">Throws for unhandled SDK exceptions.</exception> 
         </member>
-        <member name="M:Flux.SDK.DataTableAPI.DataTable.GetCellsAsync">
+        <member name="M:Flux.SDK.DataTableAPI.DataTable.UpdateCellsAsync">
             <summary>Get Cells for current project (Asyncronous method).</summary>
             <returns>List of CellInfo</returns>
             <exception cref="T:Flux.SDK.Exceptions.ConnectionFailureException">Throws if network connection is down.</exception>
@@ -451,7 +448,7 @@
             <exception cref="T:Flux.SDK.Exceptions.ServerUnavailableException">Throws if Flux server is down.</exception>
             <exception cref="T:Flux.SDK.Exceptions.InternalSDKException">Throws for unhandled SDK exceptions.</exception>
         </member>
-        <member name="M:Flux.SDK.DataTableAPI.DataTable.GetCells">
+        <member name="M:Flux.SDK.DataTableAPI.DataTable.UpdateCells">
             <summary>Get Cells for current project.</summary>
             <returns>List of CellInfo</returns>
             <exception cref="T:Flux.SDK.Exceptions.ConnectionFailureException">Throws if network connection is down.</exception>
@@ -703,20 +700,11 @@
               Looks up a localized string similar to /api/whoami.
             </summary>
         </member>
-        <member name="M:Flux.SDK.FluxSDK.Login(System.String,System.String,System.Boolean)">
-            <summary>Log in user using flux credentials./// </summary>
-            <param name="email">Login</param>
-            <param name="password">Password</param>
-            <param name="saveCookie">Set to true to save cookies.</param>
-            <returns>Currently logged in user.</returns>
-            <exception cref="T:Flux.SDK.Exceptions.ConnectionFailureException">Throws if network connections is down.</exception>
-            <exception cref="T:Flux.SDK.Exceptions.InternalSDKException">Occurs if internal critical exception occured.</exception>
-        </member>
-        <member name="M:Flux.SDK.FluxSDK.LoginViaOIC(System.String,System.String)">
-            <summary>Log in user using OIC code flow.</summary>
+        <member name="M:Flux.SDK.FluxSDK.Login(System.String,System.String)">
+            <summary>Log in user using OIDC code flow.</summary>
             <param name="clientSecret">ClientSecret to be used to request a token.</param>
             <param name="pluginInfoUrl">Info url to navigate to after login.</param>
-            /// <exception cref="T:Flux.SDK.Exceptions.AuthorizationFailedException">Throws if OIC authorization process failed.</exception>
+            <exception cref="T:Flux.SDK.Exceptions.AuthorizationFailedException">Throws if OIC authorization process failed.</exception>
             <exception cref="T:Flux.SDK.Exceptions.ConnectionFailureException">Throws if network connection is down.</exception>
             <exception cref="T:Flux.SDK.Exceptions.ServerUnavailableException">Throws if Flux server is down.</exception>
             <exception cref="T:Flux.SDK.Exceptions.InternalSDKException">Throws for unhandled SDK exceptions.</exception>

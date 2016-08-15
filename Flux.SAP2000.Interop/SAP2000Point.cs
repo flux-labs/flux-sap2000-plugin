@@ -9,6 +9,6 @@ namespace Flux.SAP2000.Interop
     public class SAP2000Point
     {
         public string id { get; set; }
-        public double[] point { get; set; }
+        public List<double> point { get; set; }
     }
 }

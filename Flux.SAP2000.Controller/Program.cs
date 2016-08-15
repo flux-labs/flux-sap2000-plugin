@@ -3,8 +3,7 @@ using System.IO;
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
-using Flux.SDK.DataTableAPI;
-using Flux.SDK.DataTableAPI.Cells;
+using Flux.SDK.DataTableAPI.DatatableTypes;
 using Flux.SDK.Types;
 using Flux.SDK;
 using Flux.SDK.Serialization;
@@ -14,6 +13,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Flux.SAP2000.Interop;
 using Flux.SAP2000.Converters;
+using Flux.SDK.DataTableAPI;
 
 namespace Flux.SDK.SAP2000
 {
@@ -63,7 +63,7 @@ namespace Flux.SDK.SAP2000
                 //    - Your client secret, provided by Flux
                 //    - A URL to return to after authorization has finished
                 
-                _sdk.LoginViaOIC(
+                _sdk.Login(
                     "97df5971-46f5-4999-b65b-04bdb107d5b8",
                     "https://community.flux.io/articles/2293/sap2000-plugin.html");
 
@@ -96,7 +96,7 @@ namespace Flux.SDK.SAP2000
 
             var SAPinstance = new Flux.SAP2000.Interop.SAP2000();
             //SAPinstance.SAP2000function();
-            string[] blank = new string[0];
+            //string[] blank = new string[0];
             //string nodes = null;
             //nodes = SAPinstance.SAP2000example(blank);
 
@@ -206,8 +206,11 @@ namespace Flux.SDK.SAP2000
                 try {
                     SerializationSettings settings = new SerializationSettings();
                     settings.EnableConvertersSupport = true;
-                    
+
                     //string value = JsonConvert.SerializeObject (elements1d);
+
+                    //double[] test = { 0 };
+                    //var value = DataSerializer.Serialize<Double[]>(test, settings);
 
                     var value = DataSerializer.Serialize<SAP20001dElement[]>(elements1d.ToArray(), settings);
                     System.Console.Write(value);
@@ -268,7 +271,7 @@ namespace Flux.SDK.SAP2000
         private static void NotificationReceived(object sender, NotificationEventArgs e)
         {
             Console.WriteLine("Notification for cell '{0}' has been received. Reason: {1}", 
-                e.Notification.CellInfo.ClientMetadata.Label, e.Notification.Event.Type);
+                e.Notification.CellInfo.ClientMetadata.Label, e.Notification.CellEvent.Type);
         }
 
         private static void ErrorReceived(object sender, DataTableAPI.ErrorEventArgs e)

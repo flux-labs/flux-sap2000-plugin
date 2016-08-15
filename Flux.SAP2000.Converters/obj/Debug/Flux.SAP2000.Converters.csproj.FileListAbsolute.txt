@@ -12,3 +12,16 @@ C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\SampleApplication\Flux.SAP2000.C
 C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\SampleApplication\Flux.SAP2000.Converters\bin\Debug\Flux.SAP2000.Interop.dll
 C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\SampleApplication\Flux.SAP2000.Converters\bin\Debug\SAP2000v18.dll
 C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\SampleApplication\Flux.SAP2000.Converters\bin\Debug\Flux.SAP2000.Interop.pdb
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\Main\Flux.SAP2000.Converters\obj\Debug\Flux.SAP2000.Converters.csprojResolveAssemblyReference.cache
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\Main\Flux.SAP2000.Converters\obj\Debug\Flux.SAP2000.Converters.dll
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\Main\Flux.SAP2000.Converters\obj\Debug\Flux.SAP2000.Converters.pdb
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\Main\Flux.SAP2000.Converters\bin\Debug\Flux.SAP2000.Converters.dll
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\Main\Flux.SAP2000.Converters\bin\Debug\Flux.SAP2000.Converters.pdb
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\Main\Flux.SAP2000.Converters\bin\Debug\Flux.SAP2000.Interop.dll
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\Main\Flux.SAP2000.Converters\bin\Debug\Flux.SDK.dll
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\Main\Flux.SAP2000.Converters\bin\Debug\Flux.SDK.Serialization.dll
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\Main\Flux.SAP2000.Converters\bin\Debug\SAP2000v18.dll
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\Main\Flux.SAP2000.Converters\bin\Debug\Flux.Logger.dll
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\Main\Flux.SAP2000.Converters\bin\Debug\Flux.Measure.CSharp.dll
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\Main\Flux.SAP2000.Converters\bin\Debug\Flux.SAP2000.Interop.pdb
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\Main\Flux.SAP2000.Converters\bin\Debug\Flux.SDK.xml

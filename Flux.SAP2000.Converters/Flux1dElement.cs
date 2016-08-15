@@ -16,18 +16,27 @@ namespace Flux.SAP2000.Converters
 
         public Flux1dElement()
         {
+            this.Start = new List<double>();
+            this.End = new List<double>();
+            //this.LoadCase = new string[0];
             System.Console.WriteLine("constructing element");
         }
 
         public static bool CanConvert(object data, Type objectType)
         {
-            return (typeof(SAP20001dElement) == objectType);
+            System.Console.WriteLine("data={0}, type={1}", data, objectType);
+
+            return (typeof(SAP20001dElement) == objectType); 
+             
+
+            //return false;
+
         }
 
-        [Newtonsoft.Json.JsonProperty("id")]
+        [JsonProperty("id")]
         public string Id { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("primitive")]
+        [JsonProperty("primitive")]
         public string Primitive
         {
             get
@@ -36,22 +45,18 @@ namespace Flux.SAP2000.Converters
             }
         }
 
-        [Newtonsoft.Json.JsonProperty("start")]
-        public double[] Start { get; set; }
+        [JsonProperty("start")]
+        public List<Double> Start { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("end")]
-        public double[] End { get; set; }
+        [JsonProperty("end")]
+        public List<Double> End { get; set; }
 
-        [Newtonsoft.Json.JsonProperty("loadCase")]
+        [JsonProperty("loadCase")]
         public string[] LoadCase { get; set; }
 
         //[Newtonsoft.Json.JsonProperty("forces")]
         //public FluxForces forces { get; set; }
 
-        Dictionary<string, object> IConverter<SAP20001dElement>.Units
-        {
-            get; set;
-        }
 
         public void ApplyUnits()
         {
@@ -78,12 +83,12 @@ namespace Flux.SAP2000.Converters
 
     public class FluxForces
     {
-        public double[] P { get; set; }
-        public double[] V2 { get; set; }
-        public double[] V3 { get; set; }
-        public double[] T { get; set; }
-        public double[] M2 { get; set; }
-        public double[] M3 { get; set; }
+        public List<double> P { get; set; }
+        public List<double> V2 { get; set; }
+        public List<double> V3 { get; set; }
+        public List<double> T { get; set; }
+        public List<double> M2 { get; set; }
+        public List<double> M3 { get; set; }
 
         public FluxForces()
         {

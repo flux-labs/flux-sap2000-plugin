@@ -109,7 +109,7 @@ namespace Flux.SAP2000.Interop
             
             string startPoint = "";
             string endPoint = "";
-            double[] axial = new double[1];
+            List<double> axial = new List<double>(1);
             SAP20001dElementForces forces = new SAP20001dElementForces();
 
             for (int i = 0; i<NumOfLines;i++) {
@@ -130,7 +130,7 @@ namespace Flux.SAP2000.Interop
 
         }
 
-            private double[] pointAsArray(cSapModel mySapModel, string pointLabel)
+            private List<double> pointAsArray(cSapModel mySapModel, string pointLabel)
             {
                 //get point coords
 
@@ -141,12 +141,12 @@ namespace Flux.SAP2000.Interop
                 int ret;
 
                 ret = mySapModel.PointObj.GetCoordCartesian(pointLabel, ref X, ref Y, ref Z);
-                //SAP2000Point newPoint = new SAP2000Point();
+            //SAP2000Point newPoint = new SAP2000Point();
                 double[] coords = new double[3];
                 coords[0] = X;
                 coords[1] = Y;
                 coords[2] = Z;
-                return coords;
+                return coords.ToList();
             }
 
             private SAP20001dElementForces getFrameForces(cSapModel mySapModel, string elementLabel) {
@@ -190,13 +190,13 @@ namespace Flux.SAP2000.Interop
                 ret = mySapModel.Results.FrameForce(elementLabel, eItemTypeElm.Element, ref numberResults, ref obj, ref numberStations, ref elements, ref elmStation, ref loadCase, ref stepType, ref stepNum, ref P, ref V2, ref V3, ref T, ref M2, ref M3);
 
                 //Set returned forces to the force container ready for return
-                forces.P = P;
-                forces.V2 = V2;
-                forces.V3 = V3;
-                forces.T = T;
-                forces.M2 = M2;
-                forces.M3 = M3;
-                forces.loadCase = loadCase;
+                forces.P = P.ToList();
+                forces.V2 = V2.ToList();
+                forces.V3 = V3.ToList();
+                forces.T = T.ToList();
+                forces.M2 = M2.ToList();
+                forces.M3 = M3.ToList();
+                forces.loadCase = loadCase.ToList();
                 
                 //Debug output
                 Console.WriteLine(elementLabel);

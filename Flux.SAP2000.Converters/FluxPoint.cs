@@ -40,7 +40,7 @@ namespace Flux.SAP2000.Converters
                 return "point";
             }
         }
-        public double[] point { get; set; }
+        public List<double> point { get; set; }
 
         public Dictionary<string, object> Units
         {
