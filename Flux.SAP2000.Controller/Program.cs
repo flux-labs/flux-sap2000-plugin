@@ -8,12 +8,11 @@ using Flux.SDK.Types;
 using Flux.SDK;
 using Flux.SDK.Serialization;
 using Flux.SDK.Logger;
-using Newtonsoft;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using Flux.SAP2000.Interop;
 using Flux.SAP2000.Converters;
 using Flux.SDK.DataTableAPI;
+using System.Windows.Forms;
+using Flux.GSA.Controller;
 
 namespace Flux.SDK.SAP2000
 {
@@ -27,20 +26,21 @@ namespace Flux.SDK.SAP2000
 
         static void Main(string[] args)
         {
+            Application.Run(new FluxSAP2000());
             Console.WriteLine("Flux SDK Sample Application. Version {0}", 
                 System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString());
             
             #region Create an instance of Flux SDK 
-            Console.WriteLine("Getting Flux SDK");
+            //Console.WriteLine("Getting Flux SDK");
 
             //replace this with your personalized Flux client ID
-            var clientId = "c287b8e9-bac5-4502-b2ae-c7f83dfd9c09";
-            var clientVersion = "dev";
-            _sdk = SDKProvider.InitSDK(clientId, clientVersion);
+            //var clientId = "";
+            //var clientVersion = "dev";
+            //_sdk = SDKProvider.InitSDK(clientId, clientVersion);
 
             //auth token may be cached, so we reset it by logging out before demonstrating login
-            if (_sdk.CurrentUser != null)
-                _sdk.Logout();
+            //if (_sdk.CurrentUser != null)
+            //    _sdk.Logout();
 
             //you can set the input string for logger to your own app's namespace
             _log = LogHelper.GetLogger("Flux.SDK.TestApp");
@@ -50,29 +50,30 @@ namespace Flux.SDK.SAP2000
             #region Login to Flux
 
             //login event handler will be caller after login has successfully completed
-            _sdk.OnUserLogin += Flux_OnUserLogin;
+            //_sdk.OnUserLogin += Flux_OnUserLogin;
 
             //logout event handler will be called after logging out
-            _sdk.OnUserLogout += Flux_OnUserLogout;
+            //_sdk.OnUserLogout += Flux_OnUserLogout;
 
+            
             try
             {
-                
-                //    Login to Flux using Open ID connect authorization flow using
-                //    
-                //    - Your client secret, provided by Flux
-                //    - A URL to return to after authorization has finished
-                
-                _sdk.Login(
-                    "97df5971-46f5-4999-b65b-04bdb107d5b8",
-                    "https://community.flux.io/articles/2293/sap2000-plugin.html");
+
+                //Login to Flux using Open ID connect authorization flow using
+
+                //-Your client secret, provided by Flux
+                //    -A URL to return to after authorization has finished
+
+                //_sdk.Login(
+                //    "c287b8e9-bac5-4502-b2ae-c7f83dfd9c09",
+                //    "https://community.flux.io/articles/2293/sap2000-plugin.html");
 
             }
             catch (Flux.SDK.Exceptions.AuthorizationFailedException)
             {
                 Console.WriteLine("login failed");
             }
-
+            
             #endregion
 
             //waits for user input before closing the console
@@ -105,7 +106,7 @@ namespace Flux.SDK.SAP2000
             //nodes = SAPinstance.SAP2000GetNodes();
             elements1d = SAPinstance.SAP2000Get1dElements();
             //SAP2000 nodes now stored in 'nodes' - need to convert to JSON
-            
+
             
             
             Project project = new Project();
@@ -206,6 +207,7 @@ namespace Flux.SDK.SAP2000
                 try {
                     SerializationSettings settings = new SerializationSettings();
                     settings.EnableConvertersSupport = true;
+                    
 
                     //string value = JsonConvert.SerializeObject (elements1d);
 
@@ -213,8 +215,8 @@ namespace Flux.SDK.SAP2000
                     //var value = DataSerializer.Serialize<Double[]>(test, settings);
 
                     var value = DataSerializer.Serialize<SAP20001dElement[]>(elements1d.ToArray(), settings);
-                    System.Console.Write(value);
-
+                    //System.Console.Write(value);
+                    //System.Console.Write(value.GetType());
                     CellInfo created = project.DataTable.CreateCell(value, meta);
 
                     //project.DataTable.SetCell(created, value);

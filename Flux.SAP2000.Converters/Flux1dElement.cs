@@ -18,7 +18,8 @@ namespace Flux.SAP2000.Converters
         {
             this.Start = new List<double>();
             this.End = new List<double>();
-            //this.LoadCase = new string[0];
+            
+            this.LoadCase = new List<string>();
             System.Console.WriteLine("constructing element");
         }
 
@@ -27,9 +28,6 @@ namespace Flux.SAP2000.Converters
             System.Console.WriteLine("data={0}, type={1}", data, objectType);
 
             return (typeof(SAP20001dElement) == objectType); 
-             
-
-            //return false;
 
         }
 
@@ -52,11 +50,11 @@ namespace Flux.SAP2000.Converters
         public List<Double> End { get; set; }
 
         [JsonProperty("loadCase")]
-        public string[] LoadCase { get; set; }
+        public List<string> LoadCase { get; set; }
 
-        //[Newtonsoft.Json.JsonProperty("forces")]
-        //public FluxForces forces { get; set; }
-
+        [JsonProperty("forces")]
+        public FluxForces forces { get; set; }
+        
 
         public void ApplyUnits()
         {
@@ -69,10 +67,11 @@ namespace Flux.SAP2000.Converters
 
             //these key/values should be organized under attributes
             this.Id = model.Id;
-            //this.forces = new FluxForces(model.forces);
+            this.forces = new FluxForces(model.Forces);
             this.Start = model.Start;
             this.End = model.End;
-            //this.loadCase = model.forces.loadCase;
+            
+            this.LoadCase = model.Forces.loadCase;
         }
 
         public SAP20001dElement GetFluxObject()

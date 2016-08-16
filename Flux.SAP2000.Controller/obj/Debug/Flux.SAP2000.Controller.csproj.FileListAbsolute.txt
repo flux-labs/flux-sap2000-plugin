@@ -32,3 +32,5 @@ C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\Main\Flux.SAP2000.Controller\bin
 C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\Main\Flux.SAP2000.Controller\bin\Debug\Flux.SDK.xml
 C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\Main\Flux.SAP2000.Controller\obj\Debug\Flux.SAP2000.Controller.csprojResolveAssemblyReference.cache
 C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\Main\Flux.SAP2000.Controller\bin\Debug\Flux.SAP2000.Controller.exe.config
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\Main\Flux.SAP2000.Controller\obj\Debug\Flux.GSA.Controller.FluxSAP2000.resources
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\Main\Flux.SAP2000.Controller\obj\Debug\Flux.SAP2000.Controller.csproj.GenerateResource.Cache

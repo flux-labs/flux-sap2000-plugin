@@ -8,3 +8,4 @@ C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\Main\Flux.SAP2000.Interop\bin\De
 C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\Main\Flux.SAP2000.Interop\bin\Debug\SAP2000v18.dll
 C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\Main\Flux.SAP2000.Interop\obj\Debug\Flux.SAP2000.Interop.dll
 C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\Main\Flux.SAP2000.Interop\obj\Debug\Flux.SAP2000.Interop.pdb
+C:\Users\Anthony\Documents\Flux\Plugins\SAP2000\Main\Flux.SAP2000.Interop\obj\Debug\Flux.SAP2000.Interop.csprojResolveAssemblyReference.cache

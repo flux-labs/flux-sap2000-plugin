@@ -12,15 +12,49 @@ using SAP2000v18;
 namespace Flux.SAP2000.Interop
 
 {
+    public interface ISAP2000Command
+    {
+        //string ModelFilePath { get; }
+
+        //void Analyze();
+        //void Update();
+        //List<IGSAList> GetAllLists();
+        //Dictionary<string, IGSAList> GetAllListsAsMap();
+
+        //Int32? SetEntity(IGSAEntity entity);
+        //int SetList(IGSAList list);
+        //int SetElement(IGSAElement e);
+
+        //void RemoveAllEntities();
+        //bool RemoveAllNodes();
+        //void Remove(IGSAEntity entity);
+        //void RemoveElement(IGSAElement element);
+
+        //void Archive(IGSAEntity entity);
+
+        //IGSASection GetSectionById(int id);
+        //IGSAElement[] GetAllElements();
+        //IGSAElement[] GetElementsForList(string list);
+        //IGSAElement[] GetElementsForList(IGSAList list);
+        //IGSAElement GetElementById(int id);
+        //IGSAElement[] GetElementsForList(int[] ids);
+        //IGSANode[] GetAllNodes();
+        //IGSANode[] GetNodesForList(string list);
+        //IGSANode GetNodeById(int id);
+        //Dictionary<Int32, IGSANode> GetAllNodesAsMap();
+        //Dictionary<Int32, IGSANode> GetNodesForListAsMap(string list);
+    }
+
+
 
     //SPECIFY SAP2000 SPECIFIC CLASSES FOR STORING API RETURNED DATA
 
-    
 
 
 
 
-    
+
+
 
 
 
