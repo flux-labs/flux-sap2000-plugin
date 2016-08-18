@@ -1,4 +1,4 @@
-﻿namespace Flux.GSA.Controller
+﻿namespace Flux.SAP2000.Controller
 {
     partial class FluxSAP2000
     {
@@ -33,6 +33,7 @@
             this.mnuMainMenu = new System.Windows.Forms.MenuStrip();
             this.fluxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.detachFromSAP2000ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.cmdExit = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -110,6 +111,7 @@
             // 
             this.fluxToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuOpen,
+            this.detachFromSAP2000ToolStripMenuItem,
             this.toolStripSeparator1,
             this.cmdExit});
             this.fluxToolStripMenuItem.Name = "fluxToolStripMenuItem";
@@ -119,19 +121,26 @@
             // mnuOpen
             // 
             this.mnuOpen.Name = "mnuOpen";
-            this.mnuOpen.Size = new System.Drawing.Size(248, 30);
-            this.mnuOpen.Text = "&Open GSA Model...";
+            this.mnuOpen.Size = new System.Drawing.Size(285, 30);
+            this.mnuOpen.Text = "&Attach to SAP2000...";
             this.mnuOpen.Click += new System.EventHandler(this.mnuOpen_Click);
+            // 
+            // detachFromSAP2000ToolStripMenuItem
+            // 
+            this.detachFromSAP2000ToolStripMenuItem.Name = "detachFromSAP2000ToolStripMenuItem";
+            this.detachFromSAP2000ToolStripMenuItem.Size = new System.Drawing.Size(285, 30);
+            this.detachFromSAP2000ToolStripMenuItem.Text = "&Detach from SAP2000...";
+            this.detachFromSAP2000ToolStripMenuItem.Click += new System.EventHandler(this.mnuDetach_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(245, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(282, 6);
             // 
             // cmdExit
             // 
             this.cmdExit.Name = "cmdExit";
-            this.cmdExit.Size = new System.Drawing.Size(248, 30);
+            this.cmdExit.Size = new System.Drawing.Size(285, 30);
             this.cmdExit.Text = "E&xit";
             this.cmdExit.Click += new System.EventHandler(this.cmdExit_Click);
             // 
@@ -164,8 +173,9 @@
             this.clearNodesToolStripMenuItem,
             this.testNodeToolStripMenuItem});
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(58, 29);
-            this.testToolStripMenuItem.Text = "GSA";
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(96, 29);
+            this.testToolStripMenuItem.Text = "&SAP2000";
+            this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
             // 
             // clearNodesToolStripMenuItem
             // 
@@ -219,7 +229,6 @@
             // 
             this.tabFlux.Controls.Add(this.tabFromFlux);
             this.tabFlux.Controls.Add(this.tabToFlux);
-            this.tabFlux.Enabled = false;
             this.tabFlux.Location = new System.Drawing.Point(9, 62);
             this.tabFlux.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabFlux.Name = "tabFlux";
@@ -283,6 +292,7 @@
             this.label6.Size = new System.Drawing.Size(228, 20);
             this.label6.TabIndex = 10;
             this.label6.Text = "21 elements will be sent to Flux";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label5
             // 
@@ -290,9 +300,9 @@
             this.label5.Location = new System.Drawing.Point(15, 237);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(133, 20);
+            this.label5.Size = new System.Drawing.Size(186, 20);
             this.label5.TabIndex = 9;
-            this.label5.Text = "GSA List to Send";
+            this.label5.Text = "SAP2000 Group to Send";
             // 
             // cboLists
             // 
@@ -305,6 +315,7 @@
             this.cboLists.Size = new System.Drawing.Size(366, 28);
             this.cboLists.TabIndex = 8;
             this.cboLists.ValueMember = "ref";
+            this.cboLists.SelectionChangeCommitted += new System.EventHandler(this.cboLists_SelectionChangeCommitted);
             // 
             // label4
             // 
@@ -419,8 +430,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FluxSAP2000";
-            this.Text = "Flux GSA Controller";
-            //this.Load += new System.EventHandler(this.FluxGSA_Load);
+            this.Text = "Flux SAP2000 Controller";
+            this.Load += new System.EventHandler(this.FluxSAP2000_Load_1);
             this.mnuMainMenu.ResumeLayout(false);
             this.mnuMainMenu.PerformLayout();
             this.tabFlux.ResumeLayout(false);
@@ -470,5 +481,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ToolStripProgressBar tsProgress;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ToolStripMenuItem detachFromSAP2000ToolStripMenuItem;
     }
 }

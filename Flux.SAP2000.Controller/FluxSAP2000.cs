@@ -11,17 +11,20 @@ using System.Text;
 using Flux.SDK.Serialization;
 using Flux.SAP2000.Interop;
 using System.Configuration;
-
+using SAP2000v18;
 using Flux.SAP2000.Converters;
 using System.Threading.Tasks;
 
-namespace Flux.GSA.Controller
+namespace Flux.SAP2000.Controller
 {
+
+
     public partial class FluxSAP2000 : Form
     {
         IFluxSDK _sdk;
         IFluxLogger _log;
-        ISAP2000Command _command;
+        cOAPI _activeSAP2000model;
+        //ISAP2000Command _command;
 
         public FluxSAP2000()
         {
@@ -30,8 +33,12 @@ namespace Flux.GSA.Controller
             _log = LogHelper.GetLogger("Flux.GSAPlugin");
             _log.Info("Loading Flux SAP2000 Controller");
 
-            //app settings
-            
+            //App settings
+
+            //Make sure assocaited file App.config contains your unique clientSecret
+            //This functions wil retrieve this information from the file automatically
+            //Also ensure your Flux.config file is untracked and not synced with GitHub
+            //Visit https://flux.io/developer/apps to generate clientID's
             string clientID = ConfigurationManager.AppSettings["clientID"];
             string clientVersion = ConfigurationManager.AppSettings["clientVersion"];
 
@@ -46,12 +53,14 @@ namespace Flux.GSA.Controller
 
             //set up the sdk wrapper
             _sdk = SDKProvider.InitSDK(clientID, clientVersion);
+            //auto login attempt
             Login();
-            Console.WriteLine("bob");
+           
+
         }
 
 
-
+        //Not sure what this does yet...need to ask Karl
         private void FluxSAP2000_Load(object sender, EventArgs e)
         {
             if (_sdk.CurrentUser == null)
@@ -66,12 +75,13 @@ namespace Flux.GSA.Controller
             }
         }
 
-
+        //Click event - log-in to Flux
         private void mnuLogIn_Click(object sender, EventArgs e)
         {
             Login();
         }
 
+        //Click event - log-out of Flux
         private void mnuLogOut_Click(object sender, EventArgs e)
         {
             Logout();
@@ -99,7 +109,7 @@ namespace Flux.GSA.Controller
 
         private void btnReceive_Click(object sender, EventArgs e)
         {
-            if (_command == null)
+            if (_activeSAP2000model == null)
             {
                 MessageBox.Show("A SAP2000 file must be open to receive data from Flux. " +
                     "Use File > Open SAP2000 Model...");
@@ -116,17 +126,19 @@ namespace Flux.GSA.Controller
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            if (_command == null)
+            if (_activeSAP2000model == null)
             {
                 MessageBox.Show("A SAP2000 file must be open to send data to Flux. " +
                     "Use File > Open SAP2000 Model...");
                 return;
             }
-
+            //Remove code below for offline debugging
+            /*
             if (cboKeysTo.SelectedItem == null)
             {
                 MessageBox.Show("Select a key before sending.");
             }
+            */
             else
                 SendToFlux();
         }
@@ -138,18 +150,29 @@ namespace Flux.GSA.Controller
 
         private void mnuOpen_Click(object sender, EventArgs e)
         {
-            dlgOpenFile.ShowDialog();
+            _activeSAP2000model = Flux.SAP2000.Interop.SAP2000.SAP2000attach();
+            Console.WriteLine("Attached");
+            BindGroups();
+            //dlgOpenFile.ShowDialog();
         }
 
-        /*
+        private void mnuDetach_Click(object sender, EventArgs e)
+        {
+            _activeSAP2000model = null;
+            Console.WriteLine("Deattached");
+            //dlgOpenFile.ShowDialog();
+        }
+
         private void dlgOpenFile_FileOk(object sender, CancelEventArgs e)
         {
-            _command = Flux.GSA.Interop.GSA.createCommand(dlgOpenFile.FileName);
-
-            BindLists();
-            UpdateMenuOptions();
+            //_command = Flux.SAP2000.Interop.SAP2000.createCommand(dlgOpenFile.FileName);
+            Console.WriteLine("open file yo");
+            BindGroups();
+            //UpdateMenuOptions();
         }
-        */
+
+
+
 
         private string StatusMessage
         {
@@ -196,9 +219,31 @@ namespace Flux.GSA.Controller
 
                 CellInfo cell = (CellInfo)cboKeysTo.SelectedItem;
                 Project project = (Project)cboProjectsTo.SelectedItem;
-                //IGSAList list = (IGSAList)cboLists.SelectedItem;
-                //FluxSender sender = new FluxSender(project, cell, list);
-                //sender.Send(_command);
+
+                //Default to extract all elements in case groups are not populated in drop down
+                string groupName = null;
+
+                //line of code below is where we will select the SAP2000 group to send to Flux
+                groupName = (string)cboLists.SelectedItem;
+
+                //Make call to extract all 1d SAP2000 elements and associated forces
+                // ! currently investigating extracting 1d elements by name or by group...
+
+
+
+                List<SAP20001dElement> elements1d = Interop.SAP2000.SAP2000Get1dElements(_activeSAP2000model, groupName);
+
+
+                //Send this data to the selected Flux Project and Data Key (known as a Cell by the SDK)
+                project.DataTable.SetCell(cell, elements1d);
+                
+
+                Console.WriteLine(elements1d.Count);
+                //debug
+                for (var k = 0; k < elements1d.Count; k++)
+                {
+                    Console.WriteLine(elements1d[k].Forces.V2[0]);
+                }
             }
             catch (Exception e)
             {
@@ -219,15 +264,13 @@ namespace Flux.GSA.Controller
                 _log.Debug("Attempting to log in to Flux.");
 
                 _sdk.OnUserLogin += flux_OnUserLogin;
+
+                //Make sure assocaited file App.config contains your unique clientSecret
                 _sdk.Login(
                     ConfigurationManager.AppSettings["clientSecret"],
                     ConfigurationManager.AppSettings["redirectUrl"]
                     );
-                //string a = "97df5971-46f5-4999-b65b-04bdb107d5b8";
-                //string b = "https://google.com";
-                //_sdk.Login(
-                //    a,b
-                //    );
+
             }
             catch (Flux.SDK.Exceptions.AuthorizationFailedException)
             {
@@ -245,6 +288,7 @@ namespace Flux.GSA.Controller
                 InitWithUser(user);
         }
 
+        //log-out sequence
         private void Logout()
         {
             if (_sdk.CurrentUser != null)
@@ -317,18 +361,19 @@ namespace Flux.GSA.Controller
             }
         }
 
-        /*
-        private void BindLists()
+        //Populate the SAP2000 model group drop down list
+        private void BindGroups()
         {
-            List<IGSAList> lists = _command.GetAllLists();
-            if (lists != null)
+
+            List<string> GroupNames = Interop.SAP2000.getAllGroupNames(_activeSAP2000model);
+            if (GroupNames != null)
             {
                 cboLists.DisplayMember = "Name";
                 cboLists.ValueMember = "Ref";
-                cboLists.DataSource = lists;
+                cboLists.DataSource = GroupNames;
             }
         }
-        */
+
 
         private void ComboBoxFormat(object sender, ListControlConvertEventArgs e)
         {
@@ -341,7 +386,7 @@ namespace Flux.GSA.Controller
             {
                 mnuLogIn.Enabled = true;
                 mnuLogOut.Enabled = false;
-                tabFlux.Enabled = false;
+                //tabFlux.Enabled = false;
                 mnuLogOut.Text = "Log Out";
 
                 this.StatusMessage = "Log in to Flux";
@@ -350,14 +395,14 @@ namespace Flux.GSA.Controller
             {
                 mnuLogIn.Enabled = false;
                 mnuLogOut.Enabled = true;
-                tabFlux.Enabled = true;
+                //tabFlux.Enabled = true;
                 mnuLogOut.Text = String.Format("Log out '{0}'", _sdk.CurrentUser.Email);
 
-                if (_command == null)
-                    this.StatusMessage = "GSA model has not been loaded.";
+                if (_activeSAP2000model == null)
+                    this.StatusMessage = "SAP2000 model has not been loaded.";
                 //else
-                    //this.StatusMessage = String.Format(
-                    //    "Loaded model: {0}", _command.ModelFilePath);
+                //this.StatusMessage = String.Format(
+                //    "Loaded model: {0}", _command.ModelFilePath);
             }
         }
 
@@ -376,6 +421,38 @@ namespace Flux.GSA.Controller
         {
 
         }
-    }
 
+        private void testToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FluxSAP2000_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboLists_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            string groupName = cboLists.SelectedValue.ToString();
+            //For some reason the next function does not return correctly for list name "ALL"...need to fix
+            int number = Interop.SAP2000.countObjectsInGroup(_activeSAP2000model, groupName);
+            label6.Text = number + " elements will be sent to Flux";
+        }
+        /*
+private void cboLists_SelectedIndexChanged(object sender, EventArgs e)
+{
+//Count objects in a group to update UI message
+int numberInGroup = 0;
+int[] types = new int[0];
+string[] objNames = new string[0];
+
+_activeSAP2000model.SapModel.GroupDef.GetAssignments(cboLists.SelectedItem.ToString(), ref numberInGroup, ref types, ref objNames);
+label6.Text = numberInGroup + " elements will be sent to Flux";
+
+}*/
+
+    }
 }
+
+

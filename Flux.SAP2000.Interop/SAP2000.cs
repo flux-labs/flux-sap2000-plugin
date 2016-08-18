@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 //using Flux.SAP2000.Interop.Impl;
 using SAP2000v18;
+
  
 
 namespace Flux.SAP2000.Interop
@@ -46,17 +47,9 @@ namespace Flux.SAP2000.Interop
     }
 
 
-
-    //SPECIFY SAP2000 SPECIFIC CLASSES FOR STORING API RETURNED DATA
-
-
-
-
-
-
-
-
-
+    ////////////////////////////////////////////
+    // --- ALL SAP2000 SPECIFIC API CALLS --- //
+    ////////////////////////////////////////////
 
     public class SAP2000
 
@@ -67,7 +60,7 @@ namespace Flux.SAP2000.Interop
         }
 
         // PROVIDE COMMON METHOD FOR ATTACHING TO THE ACTIVE SAP2000 MODEL
-        static cOAPI SAP2000attach() {
+        public static cOAPI SAP2000attach() {
 
             cOAPI mySapObject = null;
 
@@ -75,10 +68,11 @@ namespace Flux.SAP2000.Interop
             {
                 //get the active Sap2000 object
                 mySapObject = (cOAPI)System.Runtime.InteropServices.Marshal.GetActiveObject("CSI.SAP2000.API.SapObject");
+                Console.WriteLine("Found a running SAP2000 instance - attached");
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                Console.WriteLine("No running instance of the program found or failed to attach.");
+                Console.WriteLine("No running instance of the program found or failed to attach." + e);
             }
             return mySapObject;
 
@@ -128,33 +122,88 @@ namespace Flux.SAP2000.Interop
             return extractedPoints;
         }*/
 
+        public static List<string> getAllGroupNames(cOAPI _activeSAP2000model)
+        {
+            //Retreive all group names in the active model
+            int NumOfGroups = -1;
+            string[] GroupNames = new string[0];
+            _activeSAP2000model.SapModel.GroupDef.GetNameList(ref NumOfGroups, ref GroupNames);
+            return GroupNames.ToList();
+        }
+
+        
+
+        public static string[] getAllFrameObjNames(cOAPI _activeSAP2000model)
+        {
+            //Retreive all framing element names in the active model
+            int NumOfLines = -1;
+            string[] LineNames = new string[0];
+            _activeSAP2000model.SapModel.FrameObj.GetNameList(ref NumOfLines, ref LineNames);
+            return LineNames;
+
+        }
+
+        public static string[] getObjNamesForGroup(cOAPI _activeSAP2000model, string groupName)
+        {
+            //Retreive all line element names in the active model
+            int NumOfObjects = -1;
+            int[] ObjectTypes = new int[0];
+            string[] ObjectNames = new string[0];
+            var t = new int(); 
+            t = _activeSAP2000model.SapModel.GroupDef.GetAssignments(groupName, ref NumOfObjects, ref ObjectTypes, ref ObjectNames);
+            Console.WriteLine("testing! " + t);
+            Console.WriteLine("element name! " + ObjectNames[0]);
+            return ObjectNames;
+        }
+
+        public static int countObjectsInGroup(cOAPI _activeSAP2000model, string groupName)
+        {
+            int objectCount = 0;
+            int[] types = new int[0];
+            string[] names = new string[0];
+            _activeSAP2000model.SapModel.GroupDef.GetAssignments(groupName, ref objectCount, ref types, ref names);
+            return objectCount;
+        }
+
+
         // EXTRACT AND RETURN ALL 1D ELEMENTS IN THE CURRENT MODEL
-        public List<SAP20001dElement> SAP2000Get1dElements()
+        public static List<SAP20001dElement> SAP2000Get1dElements(cOAPI _activeSAP2000model, string GroupName)
         {
             List<SAP20001dElement> extracted1dElements = new List<SAP20001dElement>();
 
-            cOAPI activeSAP2000model = SAP2000attach();
-            var mySapModel = activeSAP2000model.SapModel;
-
-            int NumOfLines = 0;
             string[] LineNames = new string[0];
-            mySapModel.LineElm.GetNameList(ref NumOfLines, ref LineNames);
-            
-            
+
+            if (GroupName != "ALL")
+            {
+                //Get all object names for the Sselected group
+                //WARNING - NOT FILTERING OUT NON-LINE ELEMENTS YET - NEEDS TO BE ADDED
+                LineNames = getObjNamesForGroup(_activeSAP2000model, GroupName);
+                Console.WriteLine(LineNames);
+            }
+            else
+            { 
+                //Get all frame object element names in the active model
+                LineNames = getAllFrameObjNames(_activeSAP2000model);
+                Console.WriteLine(LineNames);
+            }
+
+            Console.WriteLine(LineNames[0]);
+
+            //create empty params in which to reciece SAP2000 API responses
             string startPoint = "";
             string endPoint = "";
-            List<double> axial = new List<double>(1);
+            List<double> axial = new List<double>();
             SAP20001dElementForces forces = new SAP20001dElementForces();
 
-            for (int i = 0; i<NumOfLines;i++) {
-
-                mySapModel.LineElm.GetPoints(LineNames[i], ref startPoint, ref endPoint);
-                forces = getFrameForces(mySapModel, LineNames[i]);
+            //Extract forces element by element
+            for (int i = 0; i<LineNames.Count();i++) {
+                _activeSAP2000model.SapModel.LineElm.GetPoints(LineNames[i], ref startPoint, ref endPoint);
+                forces = getFrameForces(_activeSAP2000model, LineNames[i]);
 
                 SAP20001dElement e = new SAP20001dElement(
                     LineNames[i],
-                    pointAsArray(mySapModel, startPoint), 
-                    pointAsArray(mySapModel, endPoint), 
+                    pointAsArray(_activeSAP2000model, startPoint), 
+                    pointAsArray(_activeSAP2000model, endPoint), 
                     forces);
 
                 extracted1dElements.Add(e);
@@ -164,7 +213,39 @@ namespace Flux.SAP2000.Interop
 
         }
 
-            private List<double> pointAsArray(cSapModel mySapModel, string pointLabel)
+        /*
+        // EXTRACT AND RETURN 1D ELEMENTS IN THE CURRENT MODEL BY GROUP
+        public static List<SAP20001dElement> SAP2000Get1dElementsByGroup(cOAPI _activeSAP2000model, string GroupName)
+        {
+            List<SAP20001dElement> extracted1dElements = new List<SAP20001dElement>();
+
+            //create empty params in which to reciece SAP2000 API responses
+            string startPoint = "";
+            string endPoint = "";
+            List<double> axial = new List<double>();
+            SAP20001dElementForces forces = new SAP20001dElementForces();
+
+    
+            //_activeSAP2000model.SapModel.LineElm.GetPoints(LineNames[i], ref startPoint, ref endPoint);
+            
+            forces = getFrameForcesByGroup(_activeSAP2000model, GroupName);
+
+            
+            SAP20001dElement e = new SAP20001dElement(
+                LineNames[i],
+                pointAsArray(_activeSAP2000model, startPoint),
+                pointAsArray(_activeSAP2000model, endPoint),
+                forces);
+                
+            extracted1dElements.Add(e);
+            
+
+            return extracted1dElements;
+
+        }
+        */
+
+        private static List<double> pointAsArray(cOAPI _activeSAP2000model, string pointLabel)
             {
                 //get point coords
 
@@ -174,7 +255,7 @@ namespace Flux.SAP2000.Interop
                 double Z = new double();
                 int ret;
 
-                ret = mySapModel.PointObj.GetCoordCartesian(pointLabel, ref X, ref Y, ref Z);
+                ret = _activeSAP2000model.SapModel.PointObj.GetCoordCartesian(pointLabel, ref X, ref Y, ref Z);
             //SAP2000Point newPoint = new SAP2000Point();
                 double[] coords = new double[3];
                 coords[0] = X;
@@ -183,7 +264,7 @@ namespace Flux.SAP2000.Interop
                 return coords.ToList();
             }
 
-            private SAP20001dElementForces getFrameForces(cSapModel mySapModel, string elementLabel) {
+            private static SAP20001dElementForces getFrameForces(cOAPI _activeSAP2000model, string elementLabel) {
                 
                 //Create storage for API returned data
                 SAP20001dElementForces forces = new SAP20001dElementForces();
@@ -221,7 +302,7 @@ namespace Flux.SAP2000.Interop
                 //Make API call to SAP2000
 
                 //Extract element forces
-                ret = mySapModel.Results.FrameForce(elementLabel, eItemTypeElm.Element, ref numberResults, ref obj, ref numberStations, ref elements, ref elmStation, ref loadCase, ref stepType, ref stepNum, ref P, ref V2, ref V3, ref T, ref M2, ref M3);
+                ret = _activeSAP2000model.SapModel.Results.FrameForce(elementLabel, eItemTypeElm.ObjectElm, ref numberResults, ref obj, ref numberStations, ref elements, ref elmStation, ref loadCase, ref stepType, ref stepNum, ref P, ref V2, ref V3, ref T, ref M2, ref M3);
 
                 //Set returned forces to the force container ready for return
                 forces.P = P.ToList();
@@ -240,12 +321,71 @@ namespace Flux.SAP2000.Interop
                 return forces;
             }
 
+        /*
+        private static SAP20001dElementForces getFrameForcesByGroup(cOAPI _activeSAP2000model, string groupName)
+        {
 
-            //create list for extracted points
-            //List<SAP2000Point> extractedPoints = new List<SAP2000Point>();
+            //Create storage for API returned data
+            SAP20001dElementForces forces = new SAP20001dElementForces();
+
+            int ret = 0;
+            string[] loadCase = new string[1];
+            double[] P = new double[1];
+            P[0] = 0;
+            double[] V2 = new double[1];
+            V2[0] = 0;
+            double[] V3 = new double[1];
+            V3[0] = 0;
+            double[] T = new double[1];
+            T[0] = 0;
+            double[] M2 = new double[1];
+            M2[0] = 0;
+            double[] M3 = new double[1];
+            M3[0] = 0;
+            double[] numberStations = new double[0];
+            int numberResults = new int();
+            numberResults = 0;
+            double[] elmStation = new double[1];
+            elmStation[0] = 0;
+            string[] obj = new string[1];
+            obj[0] = "";
+            string[] elements = new string[1];
+            elements[0] = "";
+            double[] ObjSta = new double[1];
+            ObjSta[0] = 0;
+            double[] stepNum = new double[1];
+            stepNum[0] = 0;
+            string[] stepType = new string[1];
+            stepType[0] = "";
+
+            //Make API call to SAP2000
+
+            //Extract element forces
+            ret = _activeSAP2000model.SapModel.Results.FrameForce(elementLabel, eItemTypeElm.Element, ref numberResults, ref obj, ref numberStations, ref elements, ref elmStation, ref loadCase, ref stepType, ref stepNum, ref P, ref V2, ref V3, ref T, ref M2, ref M3);
+            
+            //Set returned forces to the force container ready for return
+            forces.P = P.ToList();
+            forces.V2 = V2.ToList();
+            forces.V3 = V3.ToList();
+            forces.T = T.ToList();
+            forces.M2 = M2.ToList();
+            forces.M3 = M3.ToList();
+            forces.loadCase = loadCase.ToList();
+
+            //Debug output
+            Console.WriteLine(elementLabel);
+            Console.WriteLine("Did it run? = " + ret);
+            Console.WriteLine("Number of results? = " + numberResults);
+            //Console.WriteLine("Number of stations? = " + numberStations[0]);
+            return forces;
+        }
+        */
+
+        //create list for extracted points
+        //List<SAP2000Point> extractedPoints = new List<SAP2000Point>();
 
 
-            }
+    }
 
             /*
             public string SAP2000example(string[] args)

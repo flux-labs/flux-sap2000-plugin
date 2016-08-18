@@ -12,7 +12,7 @@ using Flux.SAP2000.Interop;
 using Flux.SAP2000.Converters;
 using Flux.SDK.DataTableAPI;
 using System.Windows.Forms;
-using Flux.GSA.Controller;
+using Flux.SAP2000.Controller;
 
 namespace Flux.SDK.SAP2000
 {
@@ -43,17 +43,17 @@ namespace Flux.SDK.SAP2000
             //    _sdk.Logout();
 
             //you can set the input string for logger to your own app's namespace
-            _log = LogHelper.GetLogger("Flux.SDK.TestApp");
+            //_log = LogHelper.GetLogger("Flux.SDK.TestApp");
 
             #endregion
 
             #region Login to Flux
-
-            //login event handler will be caller after login has successfully completed
-            //_sdk.OnUserLogin += Flux_OnUserLogin;
+            
+            //login event handler will be called after login has successfully completed
+            _sdk.OnUserLogin += Flux_OnUserLogin;
 
             //logout event handler will be called after logging out
-            //_sdk.OnUserLogout += Flux_OnUserLogout;
+            _sdk.OnUserLogout += Flux_OnUserLogout;
 
             
             try
@@ -62,11 +62,11 @@ namespace Flux.SDK.SAP2000
                 //Login to Flux using Open ID connect authorization flow using
 
                 //-Your client secret, provided by Flux
-                //    -A URL to return to after authorization has finished
+                //-A URL to return to after authorization has finished
 
-                //_sdk.Login(
-                //    "c287b8e9-bac5-4502-b2ae-c7f83dfd9c09",
-                //    "https://community.flux.io/articles/2293/sap2000-plugin.html");
+                _sdk.Login(
+                    "c287b8e9-bac5-4502-b2ae-c7f83dfd9c09",
+                    "https://community.flux.io/articles/2293/sap2000-plugin.html");
 
             }
             catch (Flux.SDK.Exceptions.AuthorizationFailedException)
@@ -81,21 +81,12 @@ namespace Flux.SDK.SAP2000
         }
 
     
-
-     
-
-        
-
-        
-
-
-
-
         static void Flux_OnUserLogin(User user)
         {
             Console.WriteLine("Logged in as '{0}'", user.FullName);
 
-            var SAPinstance = new Flux.SAP2000.Interop.SAP2000();
+            //remove: var SAPinstance = new Flux.SAP2000.Interop.SAP2000();
+            
             //SAPinstance.SAP2000function();
             //string[] blank = new string[0];
             //string nodes = null;
@@ -104,7 +95,7 @@ namespace Flux.SDK.SAP2000
             //List<FluxPoint> nodes = null;
             List<SAP20001dElement> elements1d = null;
             //nodes = SAPinstance.SAP2000GetNodes();
-            elements1d = SAPinstance.SAP2000Get1dElements();
+            //remove: elements1d = SAPinstance.SAP2000Get1dElements();
             //SAP2000 nodes now stored in 'nodes' - need to convert to JSON
 
             
@@ -118,7 +109,7 @@ namespace Flux.SDK.SAP2000
                 {if (q.Id == "aVZJo67dqdQj249W2") { project = q; } }
             Console.WriteLine(project.Name);
             //project.DataTable.GetCell()
-
+            
 
         
         
